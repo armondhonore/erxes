@@ -1,8 +1,10 @@
 import CustomerSidebar from '../components/CustomerSidebarList';
 import { useQuery, gql } from '@apollo/client';
 import { queries } from '../graphql';
+import { useTranslation } from 'react-i18next';
 
 const CustomerSection = ({ id }: { id: string }) => {
+  const { t } = useTranslation('mongolian');
   const { data, loading, error } = useQuery(gql(queries.msdCustomerRelations), {
     variables: { customerId: id },
     skip: !id,
@@ -11,7 +13,7 @@ const CustomerSection = ({ id }: { id: string }) => {
   if (error) {
     return (
       <div className="text-sm text-destructive p-4">
-        Failed to load customer relations
+        {t('failed-to-load-customer-relations')}
       </div>
     );
   }

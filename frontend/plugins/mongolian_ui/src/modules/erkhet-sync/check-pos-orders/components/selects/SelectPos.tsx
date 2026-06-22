@@ -91,11 +91,12 @@ const SelectPosValue = ({ placeholder }: { placeholder?: string }) => {
 };
 
 const SelectPosCommandItem = ({ pos }: { pos: IPos }) => {
+  const { t } = useTranslation('mongolian');
   const { onSelect, posIds } = useSelectPosContext();
 
   return (
     <Command.Item value={pos._id} onSelect={() => onSelect(pos)}>
-      <PosInline pos={[pos]} placeholder="Unnamed user" />
+      <PosInline pos={[pos]} placeholder={t('unnamed-user')} />
       <Combobox.Check checked={posIds.includes(pos._id)} />
     </Command.Item>
   );

@@ -40,7 +40,7 @@ export const AddExchangeRate = () => {
       <Sheet.Trigger asChild>
         <Button>
           <IconPlus />
-          Add Exchange Rate
+          {t('add-exchange-rate')}
         </Button>
       </Sheet.Trigger>
       <ExchangeRateSheetContent

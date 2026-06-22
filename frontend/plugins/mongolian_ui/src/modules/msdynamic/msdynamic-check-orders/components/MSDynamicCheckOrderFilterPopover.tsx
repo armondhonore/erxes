@@ -6,6 +6,7 @@ import {
   useMultiQueryState,
   useQueryState,
 } from 'erxes-ui';
+import { useTranslation } from 'react-i18next';
 import { SelectBrand, SelectMember } from 'ui-modules';
 import {
   CHECK_ORDER_FILTER_KEYS,
@@ -35,11 +36,13 @@ const CheckOrderFilterItem = ({
 };
 
 /** Primary filter command list gargana. */
-const CheckOrderPrimaryFilterView = () => (
+const CheckOrderPrimaryFilterView = () => {
+  const { t } = useTranslation('mongolian');
+  return (
   <Filter.View>
     <Command>
       <Filter.CommandInput
-        placeholder="Filter"
+        placeholder={t('filter')}
         variant="secondary"
         className="bg-background"
       />
@@ -54,7 +57,8 @@ const CheckOrderPrimaryFilterView = () => (
       </Command.List>
     </Command>
   </Filter.View>
-);
+  );
+};
 
 /** User selector filter view gargana. */
 const CheckOrderUserFilterView = ({

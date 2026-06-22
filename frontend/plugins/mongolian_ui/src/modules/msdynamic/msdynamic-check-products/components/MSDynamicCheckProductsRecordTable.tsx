@@ -1,5 +1,6 @@
 import { IconShoppingCartX } from '@tabler/icons-react';
 import { Button, RecordTable } from 'erxes-ui';
+import { useTranslation } from 'react-i18next';
 
 import { MS_DYNAMIC_SESSION_KEYS } from '@/msdynamic/constants/msDynamicSessionKey';
 import { useMSDynamicCheckProducts } from '../hooks/useMSDynamicCheckProducts';
@@ -7,6 +8,7 @@ import { msDynamicCheckProductColumns } from './MSDynamicCheckProductsColumns';
 
 /** Products record table with sync and cursor pagination */
 export const MSDynamicCheckProductsRecordTable = () => {
+  const { t } = useTranslation('mongolian');
   const {
     filteredProducts,
     checking,
@@ -34,7 +36,7 @@ export const MSDynamicCheckProductsRecordTable = () => {
         {syncableProducts.length > 0 && (
           <div className="p-2">
             <Button onClick={syncProducts} disabled={syncing || checking}>
-              Sync Products
+              {t('sync-products')}
             </Button>
           </div>
         )}
@@ -61,10 +63,10 @@ export const MSDynamicCheckProductsRecordTable = () => {
                   className="text-muted-foreground mx-auto mb-4"
                 />
                 <h3 className="text-xl font-semibold mb-2">
-                  No products in this group
+                  {t('no-products-in-this-group')}
                 </h3>
                 <p className="text-muted-foreground max-w-md">
-                  Run check or choose another product group.
+                  {t('run-check-or-choose-another')}
                 </p>
               </div>
             </div>

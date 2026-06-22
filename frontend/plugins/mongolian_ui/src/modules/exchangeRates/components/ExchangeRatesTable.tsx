@@ -63,6 +63,7 @@ const ExchangeRateMoreCell = ({
 }: {
   cell: Cell<IExchangeRate, unknown>;
 }) => {
+  const { t } = useTranslation('mongolian');
   const [, setOpenId] = useQueryState(EXCHANGE_RATE_ID_QUERY_KEY);
   const setDetail = useSetAtom(exchangeRateDetailAtom);
   const { remove } = useRemoveExchangeRates();
@@ -86,10 +87,10 @@ const ExchangeRateMoreCell = ({
         <Command shouldFilter={false}>
           <Command.List>
             <Command.Item value="edit" onSelect={handleEdit}>
-              <IconEdit /> Edit
+              <IconEdit /> {t('edit')}
             </Command.Item>
             <Command.Item value="delete" onSelect={handleDelete}>
-              <IconTrash /> Delete
+              <IconTrash /> {t('delete')}
             </Command.Item>
           </Command.List>
         </Command>
@@ -140,6 +141,7 @@ const columns: ColumnDef<IExchangeRate>[] = [
 ];
 
 export const ExchangeRatesTable = () => {
+  const { t } = useTranslation('mongolian');
   const [searchValue] = useQueryState<string>('searchValue');
   const memoizedColumns = useMemo(() => columns, []);
 
@@ -168,7 +170,7 @@ export const ExchangeRatesTable = () => {
           {hasMore && !loading && (
             <div className="flex justify-center py-4">
               <Button variant="secondary" onClick={handleLoadMore}>
-                Load more ({totalCount - rows.length} remaining)
+                {t('load-more', { count: totalCount - rows.length })}
               </Button>
             </div>
           )}
@@ -188,13 +190,13 @@ export const ExchangeRatesTable = () => {
                 />
                 <h3 className="text-lg font-semibold text-foreground">
                   {searchValue
-                    ? 'No matching exchange rates'
-                    : 'No exchange rates yet'}
+                    ? t('no-matching-exchange-rates')
+                    : t('no-exchange-rates-yet')}
                 </h3>
                 <p className="mt-1 mb-4 text-sm text-muted-foreground">
                   {searchValue
-                    ? 'Try a different currency keyword.'
-                    : 'Get started by adding your first exchange rate.'}
+                    ? t('try-different-currency')
+                    : t('create-first-exchange-rate')}
                 </p>
                 {!searchValue && <AddExchangeRate />}
               </div>

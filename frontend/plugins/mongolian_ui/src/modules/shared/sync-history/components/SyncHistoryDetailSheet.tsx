@@ -27,11 +27,11 @@ const DetailBlock = ({ title, value }: { title: string; value: unknown }) => (
 );
 
 export const SyncHistoryDetailSheet = <T extends ISyncHistoryFields>({
-  const { t } = useTranslation('mongolian');
   histories,
 }: {
   histories: T[];
 }) => {
+  const { t } = useTranslation('mongolian');
   const [searchParams, setSearchParams] = useSearchParams();
   const syncHistoryId = searchParams.get('syncHistory_id');
   const history = histories.find((item) => item._id === syncHistoryId);
@@ -58,13 +58,13 @@ export const SyncHistoryDetailSheet = <T extends ISyncHistoryFields>({
             <>
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <div className="text-muted-foreground">Content type</div>
+                  <div className="text-muted-foreground">{t('content-type')}</div>
                   <div className="font-medium">
                     {history.contentType || '-'}
                   </div>
                 </div>
                 <div>
-                  <div className="text-muted-foreground">Content</div>
+                  <div className="text-muted-foreground">{t('content')}</div>
                   <div className="font-medium">
                     {history.content || history.contentId}
                   </div>
@@ -82,11 +82,11 @@ export const SyncHistoryDetailSheet = <T extends ISyncHistoryFields>({
                 title={t('response')}
                 value={history.responseData || history.responseStr}
               />
-              <DetailBlock title="Error" value={history.error} />
+              <DetailBlock title={t('error')} value={history.error} />
             </>
           ) : (
             <div className="text-sm text-muted-foreground">
-              History not found.
+              {t('history-not-found')}
             </div>
           )}
         </Sheet.Content>

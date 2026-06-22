@@ -2,6 +2,7 @@ import { UseFormReturn } from 'react-hook-form';
 import { Checkbox, Form, Input } from 'erxes-ui';
 import { SelectBoard, SelectPipeline, SelectStage } from 'ui-modules';
 import { SelectBrand } from 'ui-modules/modules/brands';
+import { useTranslation } from 'react-i18next';
 
 import { getMSDynamicFieldLabel, TMSDynamicConfig } from '../../types';
 
@@ -64,6 +65,7 @@ export const MSDynamicConfigFormFields = ({
   formId: string;
   loading: boolean;
 }) => {
+  const { t } = useTranslation('mongolian');
   const useBoard = form.watch('useBoard');
   const selectedBoardId = form.watch('boardId');
   const selectedPipelineId = form.watch('pipelineId');
@@ -108,7 +110,7 @@ export const MSDynamicConfigFormFields = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-8 py-2"
       >
-        <MSDynamicFieldSection title="Connection">
+        <MSDynamicFieldSection title={t('connection')}>
           <Form.Field
             control={form.control}
             name="brandId"
@@ -139,7 +141,7 @@ export const MSDynamicConfigFormFields = ({
           ))}
         </MSDynamicFieldSection>
 
-        <MSDynamicFieldSection title="APIs">
+        <MSDynamicFieldSection title={t('apis')}>
           {API_FIELDS.map((name) => (
             <MSDynamicTextField
               key={name}
@@ -150,7 +152,7 @@ export const MSDynamicConfigFormFields = ({
           ))}
         </MSDynamicFieldSection>
 
-        <MSDynamicFieldSection title="Posting groups">
+        <MSDynamicFieldSection title={t('posting-groups')}>
           {POSTING_FIELDS.map((name) => (
             <MSDynamicTextField
               key={name}
@@ -161,7 +163,7 @@ export const MSDynamicConfigFormFields = ({
           ))}
         </MSDynamicFieldSection>
 
-        <MSDynamicFieldSection title="Defaults">
+        <MSDynamicFieldSection title={t('defaults')}>
           {DEFAULT_FIELDS.map((name) => (
             <MSDynamicTextField
               key={name}
@@ -205,7 +207,7 @@ export const MSDynamicConfigFormFields = ({
                       onValueChange={(value) =>
                         handleBoardChange(value, field.onChange)
                       }
-                      placeholder="Select board"
+                      placeholder={t('select-board')}
                     />
                     <Form.Message />
                   </Form.Item>
@@ -227,7 +229,7 @@ export const MSDynamicConfigFormFields = ({
                       onValueChange={(value) =>
                         handlePipelineChange(value, field.onChange)
                       }
-                      placeholder="Select pipeline"
+                      placeholder={t('select-pipeline')}
                     />
                     <Form.Message />
                   </Form.Item>
@@ -247,7 +249,7 @@ export const MSDynamicConfigFormFields = ({
                       onValueChange={(value) =>
                         field.onChange(getSingleSelectValue(value))
                       }
-                      placeholder="Select stage"
+                      placeholder={t('select-stage')}
                     />
                     <Form.Message />
                   </Form.Item>

@@ -58,7 +58,7 @@ export const SelectAnotherRulesOfProductsOnCityTax = ({
         placeholder={t('select-product-rules')}
         emptyIndicator={
           <p className="text-center text-sm text-muted-foreground">
-            No rules found
+            {t('no-rules-found')}
           </p>
         }
         loadingIndicator={

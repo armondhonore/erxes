@@ -40,6 +40,7 @@ const normalizeRuleIds = (value?: string | string[]) => {
 };
 
 const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
+  const { t } = useTranslation('mongolian');
   const form = useForm<TErkhetConfig>({
     resolver: zodResolver(addStageInErkhetConfigSchema),
     defaultValues: {
@@ -78,7 +79,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
               Борлуулалт урьдчилсан байдлаар
             </h1>
             <Button type="button" onClick={onNewConfig}>
-              New Config
+              {t('new-config')}
             </Button>
           </div>
 
@@ -160,7 +161,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
                   name="hasVat"
                   render={({ field }) => (
                     <Form.Item className="col-span-2 flex items-center gap-2 space-y-0">
-                      <Form.Label variant="peer">Has Vat</Form.Label>
+                      <Form.Label variant="peer">{t('has-vat')}</Form.Label>
                       <Form.Control>
                         <Checkbox
                           checked={field.value}
@@ -177,7 +178,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
                     render={({ field }) => (
                       <Form.Item>
                         <Form.Label>
-                          Another rules of products on vat
+                          {t('another-rules-of-products-on-vat')}
                         </Form.Label>
                         <SelectAnotherRulesOfProductsOnCityTax
                           value={field.value}
@@ -194,7 +195,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
                   name="hasCitytax"
                   render={({ field }) => (
                     <Form.Item className="col-span-2 flex items-center gap-2 space-y-0">
-                      <Form.Label variant="peer">Has City Tax</Form.Label>
+                      <Form.Label variant="peer">{t('has-citytax')}</Form.Label>
                       <Form.Control>
                         <Checkbox
                           checked={field.value}
@@ -213,7 +214,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
                     render={({ field }) => (
                       <Form.Item>
                         <Form.Label>
-                          Another rules of products on city tax
+                          {t('another-rules-of-products-on-citytax')}
                         </Form.Label>
                         <SelectAnotherRulesOfProductsOnCityTax
                           value={field.value}
@@ -254,7 +255,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
 
           <div className="flex justify-end">
             <Button type="submit" disabled={loading}>
-              {loading ? 'Saving...' : 'Save'}
+              {loading ? t('saving') : t('save')}
             </Button>
           </div>
         </form>
@@ -272,6 +273,7 @@ const NewConfigForm = ({
   onSubmit: (data: TErkhetConfig) => void;
   loading: boolean;
 }) => {
+  const { t } = useTranslation('mongolian');
   const form = useForm<TErkhetConfig>({
     resolver: zodResolver(addStageInErkhetConfigSchema),
     defaultValues,
@@ -370,7 +372,7 @@ const NewConfigForm = ({
                   name="hasVat"
                   render={({ field }) => (
                     <Form.Item className="col-span-2 flex items-center gap-2 space-y-0">
-                      <Form.Label variant="peer">Has Vat</Form.Label>
+                      <Form.Label variant="peer">{t('has-vat')}</Form.Label>
                       <Form.Control>
                         <Checkbox
                           checked={field.value}
@@ -387,7 +389,7 @@ const NewConfigForm = ({
                     render={({ field }) => (
                       <Form.Item>
                         <Form.Label>
-                          Another rules of products on vat
+                          {t('another-rules-of-products-on-vat')}
                         </Form.Label>
                         <SelectAnotherRulesOfProductsOnCityTax
                           value={field.value}
@@ -404,7 +406,7 @@ const NewConfigForm = ({
                   name="hasCitytax"
                   render={({ field }) => (
                     <Form.Item className="col-span-2 flex items-center gap-2 space-y-0">
-                      <Form.Label variant="peer">Has City Tax</Form.Label>
+                      <Form.Label variant="peer">{t('has-citytax')}</Form.Label>
                       <Form.Control>
                         <Checkbox
                           checked={field.value}
@@ -423,7 +425,7 @@ const NewConfigForm = ({
                     render={({ field }) => (
                       <Form.Item>
                         <Form.Label>
-                          Another rules of products on city tax
+                          {t('another-rules-of-products-on-citytax')}
                         </Form.Label>
                         <SelectAnotherRulesOfProductsOnCityTax
                           value={field.value}
@@ -464,10 +466,10 @@ const NewConfigForm = ({
 
           <div className="flex justify-end gap-2 mt-6">
             <Button type="button" variant="outline" onClick={onCancel}>
-              Cancel
+              {t('cancel')}
             </Button>
             <Button type="submit" disabled={loading}>
-              {loading ? 'Saving...' : 'Save'}
+              {loading ? t('saving') : t('save')}
             </Button>
           </div>
         </form>
@@ -538,7 +540,7 @@ export const SalesAreTentativeForm = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>{t('loading')}</div>;
   }
 
   return (
