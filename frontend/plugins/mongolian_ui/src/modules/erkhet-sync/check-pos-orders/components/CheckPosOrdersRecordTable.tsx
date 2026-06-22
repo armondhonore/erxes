@@ -80,8 +80,9 @@ export const CheckPosOrdersRecordTable = () => {
         syncableOrderIds,
         onToggleToSync: setOrderToSync,
         onToggleAllToSync: setAllOrdersToSync,
+        t,
       }),
-    [setAllOrdersToSync, setOrderToSync, syncableOrderIds, toSyncOrderIds],
+    [setAllOrdersToSync, setOrderToSync, syncableOrderIds, toSyncOrderIds, t],
   );
 
   return (

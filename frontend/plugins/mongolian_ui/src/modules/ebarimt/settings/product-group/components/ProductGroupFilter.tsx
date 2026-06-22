@@ -178,7 +178,7 @@ export const ProductGroupFilter = () => {
       </Filter.Bar>
       <Filter.Dialog>
         <Filter.View filterKey="searchValue" inDialog>
-          <Filter.DialogStringView filterKey="searchValue" label="Search" />
+          <Filter.DialogStringView filterKey="searchValue" label={t('search')} />
         </Filter.View>
       </Filter.Dialog>
     </Filter>

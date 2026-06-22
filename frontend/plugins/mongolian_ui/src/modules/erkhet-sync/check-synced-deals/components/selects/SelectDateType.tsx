@@ -112,7 +112,7 @@ const SelectDateTypeValue = ({
   return (
     <div className="flex items-center gap-2">
       <p className={cn('font-medium text-sm', className)}>
-        {selectedDateType.label}
+        {t(selectedDateType.label)}
       </p>
     </div>
   );
@@ -120,6 +120,7 @@ const SelectDateTypeValue = ({
 
 const SelectDateTypeCommandItem = ({ dateType }: { dateType: IDateType }) => {
   const { onValueChange, value } = useSelectDateTypeContext();
+  const { t } = useTranslation('mongolian');
   const { value: typeValue, label } = dateType || {};
 
   return (
@@ -129,7 +130,7 @@ const SelectDateTypeCommandItem = ({ dateType }: { dateType: IDateType }) => {
         onValueChange(typeValue);
       }}
     >
-      <span className="font-medium">{label}</span>
+      <span className="font-medium">{t(label)}</span>
       <Combobox.Check checked={value === typeValue} />
     </Command.Item>
   );

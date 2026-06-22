@@ -52,8 +52,8 @@ const CurrencyField = ({
   />
 );
 
-export const ExchangeRateFormFields = ({
-  const { t } = useTranslation('mongolian'); form, formId, onSubmit }: Props) => {
+export const ExchangeRateFormFields = ({ form, formId, onSubmit }: Props) => {
+  const { t } = useTranslation('mongolian');
   const { currencies, mainCurrency } = useCurrencies();
   const { setValue, getValues } = form;
 

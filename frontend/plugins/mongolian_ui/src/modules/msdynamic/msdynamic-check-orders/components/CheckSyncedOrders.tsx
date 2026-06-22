@@ -136,8 +136,9 @@ const CheckSyncedOrders = () => {
     return getCheckSyncedOrdersColumns({
       syncedOrderInfos,
       onResend: resend,
+      t,
     });
-  }, [syncedOrderInfos, toSendMsdOrdersMutation, toast]);
+  }, [syncedOrderInfos, toSendMsdOrdersMutation, toast, t]);
 
   return (
     <RecordTable.Provider

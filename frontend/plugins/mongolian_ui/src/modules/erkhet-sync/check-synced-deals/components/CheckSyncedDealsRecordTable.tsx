@@ -79,8 +79,9 @@ export const CheckSyncedDealsRecordTable = () => {
         syncableDealIds,
         onToggleToSync: setDealToSync,
         onToggleAllToSync: setAllDealsToSync,
+        t,
       }),
-    [setAllDealsToSync, setDealToSync, syncableDealIds, toSyncDealIds],
+    [setAllDealsToSync, setDealToSync, syncableDealIds, toSyncDealIds, t],
   );
 
   return (

@@ -8,42 +8,44 @@ import {
   IconHistory,
   IconChecklist,
 } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 export const MainNavigation = () => {
+  const { t } = useTranslation('mongolian');
   return (
     <>
       <NavigationMenuLinkItem
-        name="Customers"
+        name={t('customers')}
         path="mongolian/msdynamic/customers"
         icon={IconUsers}
       />
 
       <NavigationMenuLinkItem
-        name="Products"
+        name={t('products')}
         path="mongolian/msdynamic/products"
         icon={IconPackage}
       />
 
       <NavigationMenuLinkItem
-        name="Categories"
+        name={t('categories')}
         path="mongolian/msdynamic/category"
         icon={IconCategory}
       />
 
       <NavigationMenuLinkItem
-        name="Prices"
+        name={t('prices')}
         path="mongolian/msdynamic/price"
         icon={IconCurrencyDollar}
       />
 
       <NavigationMenuLinkItem
-        name="Synced Orders"
+        name={t('synced-orders')}
         path="mongolian/msdynamic/synced-orders"
         icon={IconChecklist}
       />
 
       <NavigationMenuLinkItem
-        name="Sync History"
+        name={t('sync-history')}
         path="mongolian/msdynamic/sync-history"
         icon={IconHistory}
       />

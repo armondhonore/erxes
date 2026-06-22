@@ -116,7 +116,7 @@ export const MSDynamicConfigFormFields = ({
             name="brandId"
             render={({ field }) => (
               <Form.Item>
-                <Form.Label>{getMSDynamicFieldLabel('brandId')}</Form.Label>
+                <Form.Label>{t(getMSDynamicFieldLabel('brandId'))}</Form.Label>
                 <Form.Control>
                   <SelectBrand.FormItem
                     mode="single"
@@ -187,7 +187,7 @@ export const MSDynamicConfigFormFields = ({
                   />
                 </Form.Control>
                 <Form.Label variant="peer" className="whitespace-nowrap">
-                  {getMSDynamicFieldLabel('useBoard')}
+                  {t(getMSDynamicFieldLabel('useBoard'))}
                 </Form.Label>
               </Form.Item>
             )}
@@ -200,7 +200,7 @@ export const MSDynamicConfigFormFields = ({
                 name="boardId"
                 render={({ field }) => (
                   <Form.Item>
-                    <Form.Label>{getMSDynamicFieldLabel('boardId')}</Form.Label>
+                    <Form.Label>{t(getMSDynamicFieldLabel('boardId'))}</Form.Label>
                     <SelectBoard.FormItem
                       mode="single"
                       value={field.value}
@@ -220,7 +220,7 @@ export const MSDynamicConfigFormFields = ({
                 render={({ field }) => (
                   <Form.Item>
                     <Form.Label>
-                      {getMSDynamicFieldLabel('pipelineId')}
+                      {t(getMSDynamicFieldLabel('pipelineId'))}
                     </Form.Label>
                     <SelectPipeline.FormItem
                       mode="single"
@@ -241,7 +241,7 @@ export const MSDynamicConfigFormFields = ({
                 name="stageId"
                 render={({ field }) => (
                   <Form.Item>
-                    <Form.Label>{getMSDynamicFieldLabel('stageId')}</Form.Label>
+                    <Form.Label>{t(getMSDynamicFieldLabel('stageId'))}</Form.Label>
                     <SelectStage.FormItem
                       mode="single"
                       value={field.value}
@@ -290,13 +290,15 @@ const MSDynamicTextField = ({
   name: MSDynamicTextFieldName;
   loading: boolean;
   type?: 'text' | 'password';
-}) => (
+}) => {
+  const { t } = useTranslation('mongolian');
+  return (
   <Form.Field
     control={form.control}
     name={name}
     render={({ field }) => (
       <Form.Item>
-        <Form.Label>{getMSDynamicFieldLabel(name)}</Form.Label>
+        <Form.Label>{t(getMSDynamicFieldLabel(name))}</Form.Label>
         <Form.Control>
           <Input
             type={type}
@@ -309,4 +311,5 @@ const MSDynamicTextField = ({
       </Form.Item>
     )}
   />
-);
+  );
+};

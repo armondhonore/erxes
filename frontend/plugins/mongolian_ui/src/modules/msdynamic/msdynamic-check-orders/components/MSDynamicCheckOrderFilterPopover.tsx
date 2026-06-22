@@ -25,12 +25,13 @@ const CheckOrderFilterItem = ({
   field,
   inDialog,
 }: ICheckOrderFilterItemProps) => {
+  const { t } = useTranslation('mongolian');
   const { Icon, key, label } = field;
 
   return (
     <Filter.Item value={key} inDialog={inDialog}>
       <Icon />
-      {label}
+      {t(label)}
     </Filter.Item>
   );
 };

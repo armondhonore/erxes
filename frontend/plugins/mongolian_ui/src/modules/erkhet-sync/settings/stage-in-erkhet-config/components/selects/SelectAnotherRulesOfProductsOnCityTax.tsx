@@ -12,7 +12,6 @@ const normalizeRuleIds = (value?: string | string[]) => {
 };
 
 export const SelectAnotherRulesOfProductsOnCityTax = ({
-  const { t } = useTranslation('mongolian');
   value,
   onValueChange,
   kind = 'vat',
@@ -21,6 +20,7 @@ export const SelectAnotherRulesOfProductsOnCityTax = ({
   onValueChange: (value: string[]) => void;
   kind?: 'vat' | 'ctax';
 }) => {
+  const { t } = useTranslation('mongolian');
   const { anotherRulesOfProductsOnCityTax, loading } =
     useGetAnotherRulesOfProductsOnCityTax(
       {

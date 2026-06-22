@@ -1,7 +1,8 @@
 import { IconShoppingCartX } from '@tabler/icons-react';
 import { RecordTable } from 'erxes-ui';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { msDynamicSyncHistoryColumns } from './MSDynamicSyncHistoryColumns';
+import { getMsDynamicSyncHistoryColumns } from './MSDynamicSyncHistoryColumns';
 import { useMSDynamicSyncHistory } from '../hooks/useMSDynamicSyncHistory';
 import { MSDynamicSyncHistoryDetailSheet } from './MSDynamicSyncHistoryDetailSheet';
 import { getMSDynamicSessionKey } from '../../constants/msDynamicSessionKey';
@@ -12,10 +13,11 @@ export const MSDynamicSyncHistoryRecordTable = () => {
     useMSDynamicSyncHistory();
 
   const { hasPreviousPage, hasNextPage } = pageInfo || {};
+  const columns = useMemo(() => getMsDynamicSyncHistoryColumns(t), [t]);
 
   return (
     <RecordTable.Provider
-      columns={msDynamicSyncHistoryColumns}
+      columns={columns}
       data={syncHistories || []}
       className="m-3"
       stickyColumns={['more', 'createdAt']}

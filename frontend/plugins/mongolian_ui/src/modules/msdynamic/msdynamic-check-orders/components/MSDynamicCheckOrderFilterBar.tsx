@@ -44,13 +44,14 @@ export const MSDynamicCheckOrderTextFilterBarItem = ({
   field,
   value,
 }: IMSDynamicCheckOrderTextFilterBarItemProps) => {
+  const { t } = useTranslation('mongolian');
   const { Icon, key, label } = field;
 
   return (
     <Filter.BarItem queryKey={key}>
       <Filter.BarName>
         <Icon />
-        {label}
+        {t(label)}
       </Filter.BarName>
       <Filter.BarButton filterKey={key} inDialog>
         {value}

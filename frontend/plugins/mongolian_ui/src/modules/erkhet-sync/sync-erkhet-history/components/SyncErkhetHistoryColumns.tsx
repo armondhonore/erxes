@@ -102,9 +102,10 @@ export const syncErkhetHistoryColumns: ColumnDef<ISyncHistory>[] = [
   {
     id: 'response',
     accessorKey: 'responseStr',
-    header: () => (
-      <RecordTable.InlineHead icon={IconCategory} label="Response" />
-    ),
+    header: () => {
+      const { t } = useTranslation('mongolian');
+      return <RecordTable.InlineHead icon={IconCategory} label={t('response')} />;
+    },
     cell: ({ row }) => {
       return (
         <SyncHistoryClickableColumnCell

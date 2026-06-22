@@ -15,7 +15,7 @@ export const MSDynamicBreadCrumb = () => {
       </Button>
       <Separator.Inline />
       <Button variant="ghost" className="hover:bg-transparent font-semibold">
-        {MSDYNAMIC_ROUTES.find((r) => pathname.includes(r.value))?.label}
+        {t(MSDYNAMIC_ROUTES.find((r) => pathname.includes(r.value))?.label ?? '')}
       </Button>
     </>
   );
