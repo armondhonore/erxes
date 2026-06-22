@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Form, MultipleSelector, MultiSelectOption, Spinner } from 'erxes-ui';
 import { useGetAnotherRulesOfProductsOnCityTax } from '../../hooks/useGetAnotherRulesOfProductsOnCityTax';
 import { IAnotherRulesOfProductsOnCityTax } from '../../types/anotherRulesOfProductsOnCityTax';
@@ -11,6 +12,7 @@ const normalizeRuleIds = (value?: string | string[]) => {
 };
 
 export const SelectAnotherRulesOfProductsOnCityTax = ({
+  const { t } = useTranslation('mongolian');
   value,
   onValueChange,
   kind = 'vat',
@@ -53,7 +55,7 @@ export const SelectAnotherRulesOfProductsOnCityTax = ({
       <MultipleSelector
         value={selectedOptions}
         options={options}
-        placeholder="Select product rules"
+        placeholder={t('select-product-rules')}
         emptyIndicator={
           <p className="text-center text-sm text-muted-foreground">
             No rules found

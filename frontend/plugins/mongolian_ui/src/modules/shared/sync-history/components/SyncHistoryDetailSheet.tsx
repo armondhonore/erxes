@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Sheet } from 'erxes-ui';
 import { useSearchParams } from 'react-router-dom';
 import { stringifySyncValue } from './stringifySyncValue';
@@ -26,6 +27,7 @@ const DetailBlock = ({ title, value }: { title: string; value: unknown }) => (
 );
 
 export const SyncHistoryDetailSheet = <T extends ISyncHistoryFields>({
+  const { t } = useTranslation('mongolian');
   histories,
 }: {
   histories: T[];
@@ -48,7 +50,7 @@ export const SyncHistoryDetailSheet = <T extends ISyncHistoryFields>({
     <Sheet open={Boolean(syncHistoryId)} onOpenChange={handleOpenChange} modal>
       <Sheet.View className="sm:max-w-3xl">
         <Sheet.Header>
-          <Sheet.Title>Sync history detail</Sheet.Title>
+          <Sheet.Title>{t('sync-history-detail')}</Sheet.Title>
           <Sheet.Close />
         </Sheet.Header>
         <Sheet.Content className="overflow-y-auto p-5 space-y-5">
@@ -69,15 +71,15 @@ export const SyncHistoryDetailSheet = <T extends ISyncHistoryFields>({
                 </div>
               </div>
               <DetailBlock
-                title="Consume"
+                title={t('consume')}
                 value={history.consumeData || history.consumeStr}
               />
               <DetailBlock
-                title="Send"
+                title={t('send')}
                 value={history.sendData || history.sendStr}
               />
               <DetailBlock
-                title="Response"
+                title={t('response')}
                 value={history.responseData || history.responseStr}
               />
               <DetailBlock title="Error" value={history.error} />

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Cell, ColumnDef } from '@tanstack/react-table';
 import {
   IconArrowsExchange,
@@ -107,37 +108,28 @@ const columns: ColumnDef<IExchangeRate>[] = [
   {
     id: 'date',
     accessorKey: 'date',
-    header: () => <RecordTable.InlineHead label="Date" icon={IconCalendar} />,
+    header: () => { /* eslint-disable-next-line react-hooks/rules-of-hooks */ const { t } = useTranslation('mongolian'); return <RecordTable.InlineHead label={t('date')} icon={IconCalendar} />; },
     cell: ({ cell }) => <ExchangeRateDateCell cell={cell} />,
     size: 200,
   },
   {
     id: 'mainCurrency',
     accessorKey: 'mainCurrency',
-    header: () => (
-      <RecordTable.InlineHead label="Main Currency" icon={IconCoin} />
-    ),
+    header: () => { /* eslint-disable-next-line react-hooks/rules-of-hooks */ const { t } = useTranslation('mongolian'); return <RecordTable.InlineHead label={t('main-currency')} icon={IconCoin} />; },
     cell: ({ cell }) => <CurrencyCell value={cell.getValue() as string} />,
     size: 200,
   },
   {
     id: 'rateCurrency',
     accessorKey: 'rateCurrency',
-    header: () => (
-      <RecordTable.InlineHead
-        label="Rate Currency"
-        icon={IconCurrencyDollar}
-      />
-    ),
+    header: () => { /* eslint-disable-next-line react-hooks/rules-of-hooks */ const { t } = useTranslation('mongolian'); return <RecordTable.InlineHead label={t('rate-currency')} icon={IconCurrencyDollar} />; },
     cell: ({ cell }) => <CurrencyCell value={cell.getValue() as string} />,
     size: 200,
   },
   {
     id: 'rate',
     accessorKey: 'rate',
-    header: () => (
-      <RecordTable.InlineHead label="Rate" icon={IconArrowsExchange} />
-    ),
+    header: () => { /* eslint-disable-next-line react-hooks/rules-of-hooks */ const { t } = useTranslation('mongolian'); return <RecordTable.InlineHead label={t('rate')} icon={IconArrowsExchange} />; },
     cell: ({ cell }) => (
       <RecordTableInlineCell>
         <TextOverflowTooltip value={String(cell.getValue() ?? '')} />

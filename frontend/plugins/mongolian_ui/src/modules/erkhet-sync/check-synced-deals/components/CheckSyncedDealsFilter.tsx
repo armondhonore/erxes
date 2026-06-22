@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { IconCalendar, IconBuilding, IconHash } from '@tabler/icons-react';
 import {
   Combobox,
@@ -19,6 +20,7 @@ import { SelectStage } from './selects/SelectStage';
 import { SelectDateType } from './selects/SelectDateType';
 import { useState } from 'react';
 export const CheckSyncedDealsFilterPopover = () => {
+  const { t } = useTranslation('mongolian');
   const [boardId] = useFilterQueryState<string>('boardId');
   const [pipelineId] = useFilterQueryState<string>('pipelineId');
   const [user, setUser] = useQueryState<string>('user');
@@ -57,7 +59,7 @@ export const CheckSyncedDealsFilterPopover = () => {
           <Filter.View>
             <Command>
               <Filter.CommandInput
-                placeholder="Filter"
+                placeholder={t('filter')}
                 variant="secondary"
                 className="bg-background"
               />
@@ -196,7 +198,7 @@ export const CheckSyncedDealsFilter = () => {
         <SelectPipeline.FilterBar boardId={boardId || undefined} />
         <SelectStage.FilterBar pipelineId={pipelineId || undefined} />
         <Filter.BarItem queryKey="user">
-          <Filter.BarName>Assigned To</Filter.BarName>
+          <Filter.BarName>{t('assigned-to')}</Filter.BarName>
           <SelectMember.Provider
             mode="single"
             value={user || ''}

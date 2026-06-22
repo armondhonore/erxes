@@ -17,6 +17,7 @@ import {
   useQueryState,
 } from 'erxes-ui';
 import { IconTag } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 import {
   SelectContent,
   SelectTrigger,
@@ -96,6 +97,7 @@ const SelectContentTypeValue = ({
   className?: string;
 }) => {
   const { value, contentTypes } = useSelectContentTypeContext();
+  const { t } = useTranslation('mongolian');
   const selectedContentType = contentTypes?.find(
     (type) => type.value === value,
   );
@@ -103,7 +105,7 @@ const SelectContentTypeValue = ({
   if (!selectedContentType) {
     return (
       <span className="text-accent-foreground/80">
-        {placeholder || 'Select content type'}
+        {placeholder || t('select-content-type')}
       </span>
     );
   }
@@ -140,12 +142,13 @@ const SelectContentTypeCommandItem = ({
 
 const SelectContentTypeContent = () => {
   const { contentTypes } = useSelectContentTypeContext();
+  const { t } = useTranslation('mongolian');
 
   return (
     <Command>
-      <Command.Input placeholder="Search content type" />
+      <Command.Input placeholder={t('search-content-type')} />
       <Command.Empty>
-        <span className="text-muted-foreground">No content types found</span>
+        <span className="text-muted-foreground">{t('no-content-types-found')}</span>
       </Command.Empty>
       <Command.List>
         {contentTypes?.map((contentType) => (
@@ -160,6 +163,7 @@ const SelectContentTypeContent = () => {
 };
 
 export const SelectContentTypeFilterItem = () => {
+  const { t } = useTranslation('mongolian');
   return (
     <Filter.Item
       value="contentType"
@@ -168,7 +172,7 @@ export const SelectContentTypeFilterItem = () => {
       }}
     >
       <IconTag />
-      Content Type
+      {t('content-type')}
     </Filter.Item>
   );
 };
@@ -216,12 +220,13 @@ export const SelectContentTypeFilterBar = ({
     'contentType',
   );
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation('mongolian');
 
   return (
     <Filter.BarItem queryKey={'contentType'}>
       <Filter.BarName>
         <IconTag />
-        Content Type
+        {t('content-type')}
       </Filter.BarName>
       <SelectContentTypeProvider
         mode={mode}

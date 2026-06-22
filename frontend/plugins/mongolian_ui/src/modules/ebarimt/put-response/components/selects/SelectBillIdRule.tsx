@@ -18,6 +18,7 @@ import {
 } from 'erxes-ui';
 
 import { IconFilter } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 import { BILL_ID_RULE_DATA } from '../../constants/billIdRuleData';
 import {
   SelectContent,
@@ -97,12 +98,13 @@ const SelectBillIdRuleValue = ({
   className?: string;
 }) => {
   const { value, billIdRules } = useSelectBillIdRuleContext();
+  const { t } = useTranslation('mongolian');
   const selectedBillIdRule = billIdRules?.find((type) => type.value === value);
 
   if (!selectedBillIdRule) {
     return (
       <span className="text-accent-foreground/80">
-        {placeholder || 'Select bill ID rule'}
+        {placeholder || t('select-bill-id-rule')}
       </span>
     );
   }
@@ -139,12 +141,13 @@ const SelectBillIdRuleCommandItem = ({
 
 const SelectBillIdRuleContent = () => {
   const { billIdRules } = useSelectBillIdRuleContext();
+  const { t } = useTranslation('mongolian');
 
   return (
     <Command>
-      <Command.Input placeholder="Search bill ID rule" />
+      <Command.Input placeholder={t('search-bill-id-rule')} />
       <Command.Empty>
-        <span className="text-muted-foreground">No bill ID rules found</span>
+        <span className="text-muted-foreground">{t('no-bill-id-rules-found')}</span>
       </Command.Empty>
       <Command.List>
         {billIdRules?.map((billIdRule) => (
@@ -159,10 +162,11 @@ const SelectBillIdRuleContent = () => {
 };
 
 export const SelectBillIdRuleFilterItem = () => {
+  const { t } = useTranslation('mongolian');
   return (
     <Filter.Item value="billIdRule">
       <IconFilter />
-      Bill ID Rule
+      {t('bill-id-rule')}
     </Filter.Item>
   );
 };
@@ -211,12 +215,13 @@ export const SelectBillIdRuleFilterBar = ({
     'billIdRule',
   );
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation('mongolian');
 
   return (
     <Filter.BarItem queryKey={'billIdRule'}>
       <Filter.BarName>
         <IconFilter />
-        Bill ID Rule
+        {t('bill-id-rule')}
       </Filter.BarName>
       <SelectBillIdRuleProvider
         mode={mode}

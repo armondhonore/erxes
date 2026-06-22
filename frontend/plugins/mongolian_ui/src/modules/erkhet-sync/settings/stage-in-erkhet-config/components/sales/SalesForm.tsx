@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Button, Checkbox, Form, Input, Select } from 'erxes-ui';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -84,9 +85,9 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
             control={form.control}
             render={({ field }) => (
               <Form.Item>
-                <Form.Label>Title</Form.Label>
+                <Form.Label>{t('title')}</Form.Label>
                 <Form.Control>
-                  <Input {...field} placeholder="Title" />
+                  <Input {...field} placeholder={t('title')} />
                 </Form.Control>
                 <Form.Message />
               </Form.Item>
@@ -113,7 +114,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
                   name="responseField"
                   render={({ field }) => (
                     <Form.Item className="w-full">
-                      <Form.Label>Choose Response Field</Form.Label>
+                      <Form.Label>{t('choose-response-field')}</Form.Label>
                       <Select
                         value={field.value}
                         onValueChange={(value) => {
@@ -121,7 +122,7 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
                         }}
                       >
                         <Select.Trigger className="w-full">
-                          <Select.Value placeholder="Choose Response Field" />
+                          <Select.Value placeholder={t('choose-response-field')} />
                         </Select.Trigger>
                         <Select.Content>
                           {CHOOSE_RESPONSE_FIELD_DATA.map(
@@ -144,9 +145,9 @@ const EditConfigForm = ({ config, onNewConfig, onSubmit, loading }: any) => {
                   name="userEmail"
                   render={({ field }) => (
                     <Form.Item>
-                      <Form.Label>User Email</Form.Label>
+                      <Form.Label>{t('user-email')}</Form.Label>
                       <Form.Control>
-                        <Input {...field} placeholder="User Email" />
+                        <Input {...field} placeholder={t('user-email')} />
                       </Form.Control>
                       <Form.Message />
                     </Form.Item>
@@ -270,9 +271,9 @@ const NewConfigForm = ({
             control={form.control}
             render={({ field }) => (
               <Form.Item>
-                <Form.Label>Title</Form.Label>
+                <Form.Label>{t('title')}</Form.Label>
                 <Form.Control>
-                  <Input {...field} placeholder="Title" />
+                  <Input {...field} placeholder={t('title')} />
                 </Form.Control>
                 <Form.Message />
               </Form.Item>
@@ -298,7 +299,7 @@ const NewConfigForm = ({
                   name="responseField"
                   render={({ field }) => (
                     <Form.Item className="w-full">
-                      <Form.Label>Choose Response Field</Form.Label>
+                      <Form.Label>{t('choose-response-field')}</Form.Label>
                       <Select
                         value={field.value}
                         onValueChange={(value) => {
@@ -306,7 +307,7 @@ const NewConfigForm = ({
                         }}
                       >
                         <Select.Trigger className="w-full">
-                          <Select.Value placeholder="Choose Response Field" />
+                          <Select.Value placeholder={t('choose-response-field')} />
                         </Select.Trigger>
                         <Select.Content>
                           {CHOOSE_RESPONSE_FIELD_DATA.map(
@@ -329,9 +330,9 @@ const NewConfigForm = ({
                   name="userEmail"
                   render={({ field }) => (
                     <Form.Item>
-                      <Form.Label>User Email</Form.Label>
+                      <Form.Label>{t('user-email')}</Form.Label>
                       <Form.Control>
-                        <Input {...field} placeholder="User Email" />
+                        <Input {...field} placeholder={t('user-email')} />
                       </Form.Control>
                       <Form.Message />
                     </Form.Item>
@@ -427,6 +428,7 @@ const NewConfigForm = ({
 };
 
 export const SalesForm = () => {
+  const { t } = useTranslation('mongolian');
   const [showNewConfig, setShowNewConfig] = useState(false);
   const { createStageInErkhetConfig, loading: createLoading } =
     useCreateStageInErkhetConfig();
