@@ -1,0 +1,25 @@
+application:
+  name: erxes
+  pods:
+  - name: app
+    image: erxes/erxes:latest
+    path: /
+    servicePorts:
+    - 3000
+    vars:
+      NODE_ENV: production
+      MONGO_URL: "mongodb://mongo.pod:27017/erxes"
+      REDIS_HOST: "redis.pod"
+      REDIS_PORT: "6379"
+  - name: mongo
+    image: mongo:6
+    servicePorts:
+    - 27017
+    volumes:
+    - name: erxes-mongo
+      mountPath: /data/db
+      size: 10Gi
+  - name: redis
+    image: redis:7-alpine
+    servicePorts:
+    - 6379
